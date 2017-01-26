@@ -1,5 +1,6 @@
 import numpy as np
 # Change the file name
+# 
 f = open("by2.txt", "r")
 data = []
 g = 9.8

@@ -92,7 +92,8 @@ for i in range(100):
 	# First Problem: fixed q_value, and add head constraint as variables
 	hc = Variable(num_v + 1)
 	objective = Minimize(10000*norm2(A.transpose()*hc - np.diag(L)*np.square(q_value)) + norm2(hc - h_value))
-	constraints = [0 <= hc, hc[9] == 0, hc[8] >= h[8], hc[4] >= h[4], hc[5] >= h[5]]
+	# constraints = [0 <= hc, hc[9] == 0, hc[8] >= h[8], hc[4] >= h[4], hc[5] >= h[5]]
+	constraints = [0 <= hc, h <= hc, hc[-1] == 0]
 	prob = Problem(objective, constraints)
 	result = prob.solve(solver = "CVXOPT")
 
@@ -105,7 +106,7 @@ for i in range(100):
 	tmp.A1[tmp.A1 < 0] = 0
 	anchor = np.sqrt(tmp.A1/L)
 	penalty = sum(abs(q - anchor))
-	objective = Minimize(1/3.0 * sum(L * q**3) + 1000*norm2(q - anchor) + 100*norm2(q - q_value))
+	objective = Minimize(1/3.0 * sum(L * q**3) + 1000*norm2(q - anchor) + 10*norm2(q - q_value))
 	constraints = [0 <= q, A*q <= d, q[8] >= 0.01, q[9] >= 0.01, q[10] >= 0.01]
 	prob = Problem(objective, constraints)
 	result = prob.solve(solver = "CVXOPT")

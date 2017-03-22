@@ -1,0 +1,154 @@
+% overall
+
+\begin{table}[]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\textbf{}         & \textbf{Small+PC1} & \textbf{Small+PC2} & \textbf{Small+PC3} & \textbf{Big+PC1} & \textbf{Big+PC2} & \textbf{Big+PC3} \\ \hline
+\textbf{$\norm{A^Th - \Lambda q^2}_2^2$}     & 417                & 66                 & 2                  & 2691900          & 15301            & 3751             \\ \hline
+\textbf{Objective}      & 56382              & 24414              & 24107              & 60771000         & 513050           & 183010           \\ \hline
+\textbf{$\frac{1}{3}q\Lambda q^2$} & 500                & 136                & 135                & 181430           & 496              & 283              \\ \hline
+\textbf{$\norm{h}_2^2$}       & 35872              & 11911              & 11716              & 5298930          & 379810           & 132930           \\ \hline
+\textbf{$\mathbf{1}^{T}s$}       & 20010              & 12367              & 12255              & 7600300          & 132750           & 49798            \\ \hline
+\end{tabular}
+\caption{Comparison Between Two Preconditions}
+\end{table}
+
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{}         & \textbf{Small+PC1} & \textbf{Small+PC2} & \textbf{Small+PC3} \\ \hline
+\textbf{$\norm{A^Th - \Lambda q^2}_2^2$}     & 417                & 66                 & 2                  \\ \hline
+\textbf{Objective}      & 56,382             & 24,414             & 24,107             \\ \hline
+\textbf{$\frac{1}{3}q\Lambda q^2$} & 500                & 136                & 135                \\ \hline
+\textbf{$\norm{h}_2^2$}       & 35,872             & 11,911             & 11,716             \\ \hline
+\textbf{$\mathbf{1}^{T}s$}       & 20,010             & 12,367             & 12,255             \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{}         & \textbf{Big+PC1} & \textbf{Big+PC2} & \textbf{Big+PC3} \\ \hline
+\textbf{$\norm{A^Th - \Lambda q^2}_2^2$}     & 2,691,900        & 15,301           & 3,751            \\ \hline
+\textbf{Objective}      & 60,771,000       & 513,050          & 183,010          \\ \hline
+\textbf{$\frac{1}{3}q\Lambda q^2$} & 181,430          & 496              & 283              \\ \hline
+\textbf{$\norm{h}_2^2$}       & 5,298,930        & 379,810          & 132,930          \\ \hline
+\textbf{$\mathbf{1}^{T}s$}       & 7,600,300        & 132,750          & 49,798           \\ \hline
+\end{tabular}
+\end{table}
+
+
+% small resource
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Small+PC3} & \textbf{Original} & \textbf{(1,1,1)} & \textbf{(2,1,1)} & \textbf{(3,1,1)} & \textbf{(10,1,1)} \\ \hline
+\textbf{$\norm{A^Th - \Lambda q^2}_2^2$}      & 2                 & 0.0117           & 0.0063           & 0.0087           & 0.0465            \\ \hline
+\textbf{Objective}       & 24,107            & 432              & 560              & 688              & 1,579             \\ \hline
+\textbf{$\frac{1}{3}q\Lambda q^2$}  & 135               & 130              & 128              & 128              & 127               \\ \hline
+\textbf{$\norm{h}_2^2$}        & 11,716            & 12,014           & 12,174           & 12,273           & 12,506            \\ \hline
+\textbf{$\mathbf{1}^{T}s$}        & 12,255            & 12,127           & 12,124           & 12,136           & 12,185            \\ \hline
+\end{tabular}
+\end{table}
+
+% small h
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Small+PC3} & \textbf{Original} & \textbf{(1,1,1)} & \textbf{(1,2,1)} & \textbf{(1,3,1)} & \textbf{(1,10,1)} \\ \hline
+\textbf{$\norm{A^Th - \Lambda q^2}_2^2$}      & 2                 & 0.0117           & 0.0083           & 0.0081           & 0.0039            \\ \hline
+\textbf{Objective}       & 24,107            & 432              & 580              & 726              & 1,733             \\ \hline
+\textbf{$\frac{1}{3}q\Lambda q^2$}  & 135               & 130              & 132              & 135              & 143               \\ \hline
+\textbf{$\norm{h}_2^2$}        & 11,716            & 12,014           & 11,768           & 11,645           & 11,441            \\ \hline
+\textbf{$\mathbf{1}^{T}s$}        & 12,255            & 12,127           & 12,267           & 12,379           & 12,757            \\ \hline
+\end{tabular}
+\end{table}
+
+
+% small s
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Small+PC3} & \textbf{Original} & \textbf{(1,1,1)} & \textbf{(1,1,2)} & \textbf{(1,1,3)} & \textbf{(1,1,10)} \\ \hline
+\textbf{$\norm{A^Th - \Lambda q^2}_2^2$}      & 2                 & 0.0117           & 0.7689           & 1.2929           & 1.9834            \\ \hline
+\textbf{Objective}       & 24,107            & 432              & 582              & 733              & 1,775             \\ \hline
+\textbf{$\frac{1}{3}q\Lambda q^2$}  & 135               & 130              & 130              & 130              & 131               \\ \hline
+\textbf{$\norm{h}_2^2$}        & 11,716            & 12,014           & 12,150           & 12,259           & 12,621            \\ \hline
+\textbf{$\mathbf{1}^{T}s$}        & 12,255            & 12,127           & 12,033           & 11,982           & 11,890            \\ \hline
+\end{tabular}
+\end{table}
+
+
+% big resource
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Big+PC3}  & \textbf{Original} & \textbf{(1,1,1)} & \textbf{(2,1,1)} & \textbf{(3,1,1)} & \textbf{(10,1,1)} \\ \hline
+\textbf{$\norm{A^Th - \Lambda q^2}_2^2$}     & 3,751             & 1,359            & 1,344            & 1,352            & NA                \\ \hline
+\textbf{Objective}      & 183,010           & 904              & 1,175            & 1,443            & NA                \\ \hline
+\textbf{$\frac{1}{3}q\Lambda q^2$} & 283               & 271              & 270              & 269              & NA                \\ \hline
+\textbf{$\norm{h}_2^2$}       & 132,930           & 152,560          & 153,100          & 153,570          & NA                \\ \hline
+\textbf{$\mathbf{1}^{T}s$}       & 49,798            & 37,825           & 37,864           & 37,813           & NA                \\ \hline
+\end{tabular}
+\end{table}
+
+
+% big h
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Big+PC3}  & \textbf{Original} & \textbf{(1,1,1)} & \textbf{(1,2,1)} & \textbf{(1,3,1)} & \textbf{(1,10,1)} \\ \hline
+\textbf{$\norm{A^Th - \Lambda q^2}_2^2$}     & 3,751             & 1,359            & 3,022            & 4,072            & 6,808             \\ \hline
+\textbf{Objective}      & 183,010           & 904              & 1,267            & 1,603            & 3,793             \\ \hline
+\textbf{$\frac{1}{3}q\Lambda q^2$} & 283               & 271              & 272              & 272              & 277               \\ \hline
+\textbf{$\norm{h}_2^2$}       & 132,930           & 152,560          & 138,350          & 131,680          & 121,560           \\ \hline
+\textbf{$\mathbf{1}^{T}s$}       & 49,798            & 37,825           & 45,664           & 51,577           & 71,694            \\ \hline
+\end{tabular}
+\end{table}
+
+
+% big s
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Big+PC3}  & \textbf{Original} & \textbf{(1,1,1)} & \textbf{(1,1,2)} & \textbf{(1,1,3)} & \textbf{(1,1,10)} \\ \hline
+\textbf{$\norm{A^Th - \Lambda q^2}_2^2$}     & 3,751             & 1,359            & 276              & 226              & 267               \\ \hline
+\textbf{Objective}      & 183,010           & 904              & 1,141            & 1,369            & 2,956             \\ \hline
+\textbf{$\frac{1}{3}q\Lambda q^2$} & 283               & 271              & 271              & 271              & 274               \\ \hline
+\textbf{$\norm{h}_2^2$}       & 132,930           & 152,560          & 165,020          & 166,290          & 168,950           \\ \hline
+\textbf{$\mathbf{1}^{T}s$}       & 49,798            & 37,825           & 34,367           & 34,130           & 33,893            \\ \hline
+\end{tabular}
+\end{table}

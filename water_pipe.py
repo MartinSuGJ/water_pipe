@@ -1,6 +1,6 @@
 import numpy as np
 # Change the file name
-f = open("by2.txt", "r")
+f = open("shamir2.txt", "r")
 data = []
 g = 9.8
 
@@ -60,6 +60,10 @@ for num, i in enumerate(end):
 	end_demand.append(float(data[i + 3][7])/1000.0)
 	d[num_v] -= float(data[i + 3][7])/1000.0
 
+
+q_constraints = [0]*(num_e + num_end)
+q_constraints[-num_end:] = end_demand
+
 """
 Stage 1:
 Use Maximum Flow Minimum Cost method to caculate an initial solution.
@@ -91,14 +95,13 @@ for i in range(100):
 	print "-----------------------Iteration %d-----------------------" %i
 	# First Problem: fixed q_value, and add head constraint as variables
 	hc = Variable(num_v + 1)
-	objective = Minimize(10000*norm2(A.transpose()*hc - np.diag(L)*np.square(q_value)) + norm2(hc - h_value))
-	# constraints = [0 <= hc, hc[9] == 0, hc[8] >= h[8], hc[4] >= h[4], hc[5] >= h[5]]
+	objective = Minimize(15*norm2(max_elemwise(A.transpose()*hc - np.diag(L)*np.square(q_value), 0)) + 20*norm2(max_elemwise(np.diag(L)*np.square(q_value) - A.transpose()*hc, 0)) + 1*norm2(hc - h_value))
+	#objective = Minimize(20*norm2(A.transpose()*hc - np.diag(L)*np.square(q_value)) + 1*norm2(hc - h_value))
 	constraints = [0 <= hc, h <= hc, hc[-1] == 0]
 	prob = Problem(objective, constraints)
 	result = prob.solve(solver = "CVXOPT")
 
 	h_value = hc.value
-	# print "Objective value is %.4f; Error values Ah-Lq^2: %.4f" % (objective.value - penalty.value, sum(abs(A.transpose()*h_value - np.diag(L)*np.square(q_value))).value)
 	
 	# Second Problem: fixed h_value, and only optimize the q
 	q = Variable(num_e + num_end)
@@ -106,17 +109,21 @@ for i in range(100):
 	tmp.A1[tmp.A1 < 0] = 0
 	anchor = np.sqrt(tmp.A1/L)
 	penalty = sum(abs(q - anchor))
-	objective = Minimize(1/3.0 * sum(L * q**3) + 1000*norm2(q - anchor) + 10*norm2(q - q_value))
-	constraints = [0 <= q, A*q <= d, q[8] >= 0.01, q[9] >= 0.01, q[10] >= 0.01]
+	objective = Minimize(1/3.0 * sum(L * q**3) + 1*norm2(q - anchor) + 1*norm2(q - q_value))
+	constraints = [q_constraints <= q, A*q <= d]
 	prob = Problem(objective, constraints)
 	result = prob.solve(solver = "CVXOPT")
 
 	q_value = q.value
 
-	obj_adj = 1/3.0 * sum(L * q**3).value
-	print "Objective value is %.4f; Error values Ah-Lq^2: %.4f" % (obj_adj, sum(abs(A.transpose()*h_value - np.diag(L)*np.square(q_value))).value)
-	print "Head value is as follow:"
-	print h_value
+	obj_adj = sum(L * q**3).value - q.value[-num_end:].transpose()*np.diag(L[-num_end:])*np.square(q.value[-num_end:]) + (q.T*(A.transpose()*h_value - np.diag(L)*np.square(q_value))).value
+	head_diff = sum(abs(max_elemwise(np.diag(L)*np.square(q_value) - A.transpose()*h_value, 0))).value
+	obj_diff = q.value.transpose()*max_elemwise(A.transpose()*h_value - np.diag(L)*np.square(q_value), 0).value
+	print "Objective value is %.4f; Error values Ah-Lq^2: %.4f; Energy diff %.4f" % (obj_adj, head_diff, obj_diff)
+	if head_diff < 0.00001:
+		break
 
 
-# hhh = np.linalg.lstsq(A.transpose(), np.diag(L)*np.square(q_value))[0]
+print "Head value is as follow:"
+print h_value
+

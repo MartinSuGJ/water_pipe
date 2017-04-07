@@ -94,7 +94,8 @@ for line in f:
         length = float(data[3])
         diameter = float(data[4])
         roughness = float(data[5])
-        edge_str = '%d %d %d %f %f %f\n' % (edge_id, node_map[node_1], node_map[node_2], length, diameter, roughness)
+        edge_type = 0
+        edge_str = '%d %d %d %f %f %f %d\n' % (edge_id, node_map[node_1], node_map[node_2], length, diameter, roughness, edge_type)
         edge_file.write(edge_str)
 
     if (read_format is 'pump'):
@@ -106,7 +107,8 @@ for line in f:
         length = 0.1
         diameter = 250.0
         roughness = 1.50
-        edge_str = '%d %d %d %f %f %f\n' % (edge_id, node_map[node_1], node_map[node_2], length, diameter, roughness)
+        edge_type = 1
+        edge_str = '%d %d %d %f %f %f %d\n' % (edge_id, node_map[node_1], node_map[node_2], length, diameter, roughness, edge_type)
         edge_file.write(edge_str)
 
     if (read_format is 'valve'):
@@ -118,7 +120,8 @@ for line in f:
         length = 0.1
         diameter = float(data[3])
         roughness = float(data[6])
-        edge_str = '%d %d %d %f %f %f\n' % (edge_id, node_map[node_1], node_map[node_2], length, diameter, roughness)
+        edge_type = 2
+        edge_str = '%d %d %d %f %f %f %d\n' % (edge_id, node_map[node_1], node_map[node_2], length, diameter, roughness, edge_type)
         edge_file.write(edge_str)
 
 # Write general info file

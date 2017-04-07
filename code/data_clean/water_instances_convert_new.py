@@ -1,7 +1,7 @@
 # Read file from Big.inp
-f = open('Big.inp', 'r')
-node_file = open('big_node.txt', 'w')
-edge_file = open('big_edge.txt', 'w')
+f = open('Small.inp', 'r')
+node_file = open('small_node.txt', 'w')
+edge_file = open('small_edge.txt', 'w')
 
 read_format = ''
 
@@ -60,9 +60,11 @@ for line in f:
         head = float(data[1])
         demand = float(data[2])
         node_map[id] = node_id
+        node_type = 0
         if demand > 0:
             outlet.append(node_id)
-        node_str = '%d %f %f\n' % (node_id, demand, head)
+            node_type = 1
+        node_str = '%d %f %f %d\n' % (node_id, demand, head, node_type)
         node_file.write(node_str)
 
     if (read_format is 'source'):
@@ -73,7 +75,8 @@ for line in f:
         demand = -1
         source.append(node_id)
         node_map[id] = node_id
-        node_str = '%d %f %f\n' % (node_id, demand, head)
+        node_type = 2
+        node_str = '%d %f %f %d\n' % (node_id, demand, head, node_type)
         node_file.write(node_str)
 
     if (read_format is 'tank'):
@@ -82,7 +85,8 @@ for line in f:
         id = data[0]
         head = float(data[1])
         node_map[id] = node_id
-        node_str = '%d %f %f\n' % (node_id, 0, head)
+        node_type = 3
+        node_str = '%d %f %f %d\n' % (node_id, 0, head, node_type)
         node_file.write(node_str)
 
     if (read_format is 'pipe'):
@@ -125,7 +129,7 @@ for line in f:
         edge_file.write(edge_str)
 
 # Write general info file
-info = open('big.txt', 'w')
+info = open('small.txt', 'w')
 info.write('%d %d \n' % (node_id, edge_id))
 for item in source:
     info.write('%d ' % (item))
